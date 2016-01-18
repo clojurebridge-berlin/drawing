@@ -58,17 +58,18 @@ Because you chose the "Graphics" option, your project is configured to
 use a Clojure library called [Quil](https://github.com/quil/quil),
 which creates drawings called "sketches."
 
-By default, your project has been setup with some "Hello World" test
-code. Let's go ahead and run this code to make sure everything is working.  
-In Nightcode, look for the "Run" option on the bottom of the main window
-and click it.
+By default, your project has been setup with an example sketch. Let's go
+ahead and run this code to make sure everything is working.  In Nightcode,
+look for the "Run" option on the bottom of the main window and click it.
 
 ![](/curriculum/images/nc-scrn3.png?raw=true)
 
-As in the screenshot above, you should see the the text "Running..."
-and then "Hello, World!" in the execution console just below the main
-editor window. Just so you now, you can also press `Ctrl + R` (or `Cmd + R`)
-to run the project.
+As in the screenshot above, you should see a separate window popup with a
+simple circle within it. If you don't see the window right away, wait a bit
+and make sure it hasn't appeared somewhere behind your other windows.
+
+Great, you've run your the program! Also, just so you know, in Nightcode you
+can also run the project code by pressing `Ctrl + R` (or `Cmd + R`).
 
 ## Modify Project
 
