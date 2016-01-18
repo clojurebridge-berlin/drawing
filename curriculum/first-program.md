@@ -113,8 +113,9 @@ The final part of working with projects is managing their
 *dependencies*. Dependencies are just code libraries that others have
 written which you can incorporate in your own project.
 
-To add a dependency, open `project.clj`. You should see a section
-which reads
+In your case, the project's dependencies were setup for you by Nightcode.
+If you want, open the `project.clj` file. You should see the following
+configuration settings:
 
 ```clj
 :dependencies [[org.clojure/clojure "1.6.0"]
@@ -124,9 +125,8 @@ which reads
 This is where our dependencies are listed. All the dependencies we
 need for this project are already included.
 
-In order to use these libraries, we have to _require_ them in our own
-project. In `src/drawing/lines.clj`, edit the ns statement you typed
-before:
+In order to use these libraries, we have to _require_ them in our own project.
+In `src/drawing/lines.clj`, edit the ns statement you typed before:
 
 ```clojure
 (ns drawing.lines
