@@ -14,46 +14,61 @@ specify your project's *dependencies*. Finally, you'll learn how to
 Up until now you've been experimenting in a REPL. Unfortunately, all
 the work you do in a REPL is lost when you close the REPL. You can
 think of a project as a permanent home for your code. You'll be using
-a tool called "Leiningen" to help you create and manage your
-project. To create a new project, run this command:
+a code editor called "Nightcode" to create and edit your project.
 
-```clojure
-lein new quil drawing
-```
+To create a new project, first download and install Nightcode. You can
+download it from [this website](https://sekao.net/nightcode/). Once it's
+installed, start it up and click "New Project" in the upper left. Enter
+the name "drawing" for your app, and then hit "Save":
 
-This should create a directory structure that looks like this:
+![](/curriculum/images/nc-scrn1.png?raw=true)
+
+At this point, Nightcode will ask you to choose the type of project you
+want to start. Your project will be graphical, so choose the "Graphics"
+option:
+
+![](/curriculum/images/nc-scrn2.png?raw=true)
+
+At this point, your project will have been created, and you should see
+a directory structure that looks like this on the left side of the Nightcode
+screen:
 
 ```
 drawing
-├── LICENSE
 ├── README.md
 ├── project.clj
+├── resources
 └── src
     └── drawing
         └── core.clj
 ```
 
 There's nothing inherently special or Clojure-y about this project
-skeleton. It's just a convention used by Leiningen. You'll be using
-Leiningen to build and run Clojure apps, and Leiningen expects your
+skeleton. It's just a convention used by Nightcode. You'll be using
+Nightcode to build and run Clojure apps, and Nightcode expects your
 app to be laid out this way. Here's the function of each part of the
 skeleton:
 
-- `project.clj` is a configuration file for Leiningen. It helps
-  Leiningen answer questions like, "What dependencies does this
-  project have?" and "When this Clojure program runs, what function
-  should get executed first?"
+- `project.clj` is a configuration file. It helps answer questions
+  like, "What dependencies does this project have?" and "When this
+  Clojure program runs, what function should get executed first?"
 - `src/drawing/core.clj` is where the Clojure code goes
 
-This uses a Clojure library, [Quil](https://github.com/quil/quil), that creates drawings called
-sketches.
+Because you chose the "Graphics" option, your project is configured to
+use a Clojure library called [Quil](https://github.com/quil/quil),
+which creates drawings called "sketches."
 
-Now let's go ahead and actually run the Quil sketch. Open up Light
-Table and do File - Open Folder - find the drawing folder and click
-Upload
+By default, your project has been setup with some "Hello World" test
+code. Let's go ahead and run this code to make sure everything is working.  
+In Nightcode, look for the "Run" option on the bottom of the main window
+and click it.
 
-Press `Ctrl + Shift + Enter` (or `Cmd + Shift + Enter`) to evaluate
-the file.
+![](/curriculum/images/nc-scrn3.png?raw=true)
+
+As in the screenshot above, you should see the the text "Running..."
+and then "Hello, World!" in the execution console just below the main
+editor window. Just so you now, you can also press `Ctrl + R` (or `Cmd + R`)
+to run the project.
 
 ## Modify Project
 
