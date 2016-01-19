@@ -14,52 +14,71 @@ specify your project's *dependencies*. Finally, you'll learn how to
 Up until now you've been experimenting in a REPL. Unfortunately, all
 the work you do in a REPL is lost when you close the REPL. You can
 think of a project as a permanent home for your code. You'll be using
-a tool called "Leiningen" to help you create and manage your
-project. To create a new project, run this command:
+a code editor called "Nightcode" to create and edit your project.
 
-```clojure
-lein new quil drawing
-```
+To create a new project, first download and install Nightcode. You can
+download it from [this website](https://sekao.net/nightcode/). Once it's
+installed, start it up and click "New Project" in the upper left. Enter
+the name "drawing" for your app, and then hit "Save":
 
-This should create a directory structure that looks like this:
+![](/curriculum/images/nc-scrn1.png?raw=true)
+
+At this point, Nightcode will ask you to choose the type of project you
+want to start. Your project will be graphical, so choose the "Graphics"
+option:
+
+![](/curriculum/images/nc-scrn2.png?raw=true)
+
+At this point, your project will have been created, and you should see
+a directory structure that looks like this on the left side of the Nightcode
+screen:
 
 ```
 drawing
-├── LICENSE
 ├── README.md
 ├── project.clj
+├── resources
 └── src
     └── drawing
         └── core.clj
 ```
 
 There's nothing inherently special or Clojure-y about this project
-skeleton. It's just a convention used by Leiningen. You'll be using
-Leiningen to build and run Clojure apps, and Leiningen expects your
+skeleton. It's just a convention used by Nightcode. You'll be using
+Nightcode to build and run Clojure apps, and Nightcode expects your
 app to be laid out this way. Here's the function of each part of the
 skeleton:
 
-- `project.clj` is a configuration file for Leiningen. It helps
-  Leiningen answer questions like, "What dependencies does this
-  project have?" and "When this Clojure program runs, what function
-  should get executed first?"
+- `project.clj` is a configuration file. It helps answer questions
+  like, "What dependencies does this project have?" and "When this
+  Clojure program runs, what function should get executed first?"
 - `src/drawing/core.clj` is where the Clojure code goes
 
-This uses a Clojure library, [Quil](https://github.com/quil/quil), that creates drawings called
-sketches.
+Because you chose the "Graphics" option, your project is configured to
+use a Clojure library called [Quil](https://github.com/quil/quil),
+which creates drawings called "sketches."
 
-Now let's go ahead and actually run the Quil sketch. Open up Light
-Table and do File - Open Folder - find the drawing folder and click
-Upload
+By default, your project has been setup with an example sketch. Let's go
+ahead and run this code to make sure everything is working.  In Nightcode,
+look for the "Run" option on the bottom of the main window and click it.
 
-Press `Ctrl + Shift + Enter` (or `Cmd + Shift + Enter`) to evaluate
-the file.
+![](/curriculum/images/nc-scrn3.png?raw=true)
+
+As in the screenshot above, you should see a separate window popup with a
+simple circle within it. If you don't see the window right away, wait a bit
+and make sure it hasn't appeared somewhere behind your other windows.
+
+Great, you've run your the program! Also, just so you know, in Nightcode you
+can also run the project code by pressing `Ctrl + R` (or `Cmd + R`).
 
 ## Modify Project
 
-Let's create another Quil sketch. In Light Table, do File - New
-File. Do File - Save File As - Enter lines.clj as the name - and
-select the directory - drawing/src/drawing - then click Save.
+Let's create another Quil sketch. In Nightcode in the left directory tree
+click on the "drawing" directory. Then at the top of the right window, click
+"New File". In the window that pops up, enter the filename lines.clj, and
+then "Save":
+
+![](/curriculum/images/nc-scrn3.png?raw=true)
 
 ## Organization
 
@@ -94,8 +113,9 @@ The final part of working with projects is managing their
 *dependencies*. Dependencies are just code libraries that others have
 written which you can incorporate in your own project.
 
-To add a dependency, open `project.clj`. You should see a section
-which reads
+In your case, the project's dependencies were setup for you by Nightcode.
+If you want, open the `project.clj` file. You should see the following
+configuration settings:
 
 ```clj
 :dependencies [[org.clojure/clojure "1.6.0"]
@@ -105,9 +125,8 @@ which reads
 This is where our dependencies are listed. All the dependencies we
 need for this project are already included.
 
-In order to use these libraries, we have to _require_ them in our own
-project. In `src/drawing/lines.clj`, edit the ns statement you typed
-before:
+In order to use these libraries, we have to _require_ them in our own project.
+In `src/drawing/lines.clj`, edit the ns statement you typed before:
 
 ```clojure
 (ns drawing.lines
