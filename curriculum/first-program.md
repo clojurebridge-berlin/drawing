@@ -68,78 +68,7 @@ As in the screenshot above, you should see a separate window popup with a
 simple circle within it. If you don't see the window right away, wait a bit
 and make sure it hasn't appeared somewhere behind your other windows.
 
-Great, you've run your the program! Also, just so you know, in Nightcode you
-can also run the project code by pressing `Ctrl + R` (or `Cmd + R`).
-
-## Modify Project
-
-Let's create another Quil sketch. In Nightcode in the left directory tree
-click on the "drawing" directory. Then at the top of the right window, click
-"New File". In the window that pops up, enter the filename lines.clj, and
-then "Save":
-
-![](/curriculum/images/nc-scrn3.png?raw=true)
-
-## Organization
-
-As your programs get more complex, you'll need to organize them. You
-organize your Clojure code by placing related functions and data in
-separate files. Clojure expects each file to correspond to a
-*namespace*, so you must *declare* a namespace at the top of each
-file.
-
-Until now, you haven't really had to care about namespaces. Namespaces
-allow you to define new functions and data structures without worrying
-about whether the name you'd like is already taken. For example, you
-could create a function named `println` within the custom namespace
-`my-special-namespace`, and it would not interfere with Clojure's
-built-in `println` function. You can use the *fully-qualified name*
-`my-special-namespace/println` to distinguish your function from the
-built-in `println`.
-
-Create a namespace in the file `src/drawing/lines.clj`. Open it, and
-type the following:
-
-```clojure
-(ns drawing.lines)
-```
-
-This line establishes that everything you define in this file will be
-stored within the `drawing.lines` namespace.
-
-## Dependencies
-
-The final part of working with projects is managing their
-*dependencies*. Dependencies are just code libraries that others have
-written which you can incorporate in your own project.
-
-In your case, the project's dependencies were setup for you by Nightcode.
-If you want, open the `project.clj` file. You should see the following
-configuration settings:
-
-```clj
-:dependencies [[org.clojure/clojure "1.6.0"]
-               [quil "2.2.6"]])
-```
-
-This is where our dependencies are listed. All the dependencies we
-need for this project are already included.
-
-In order to use these libraries, we have to _require_ them in our own project.
-In `src/drawing/lines.clj`, edit the ns statement you typed before:
-
-```clojure
-(ns drawing.lines
-   (:require [quil.core :as q]))
-```
-
-This gives us access to the library we will need to make our project.
-
-There are a couple of things going on here. First, the `:require` in
-`ns` tells Clojure to load other namespaces. The `:as` part of
-`:require` creates an *alias* for a namespace, letting you refer to
-its definitions without having to type out the entire namespace. For
-example, you can use `q/fill` instead of `quil.core/fill`.
+Great, you've run your the program!
 
 ## Your first real program
 
@@ -148,6 +77,18 @@ example, you can use `q/fill` instead of `quil.core/fill`.
 Quil is a Clojure library that provides the powers of [Processing](https://processing.org/), a
 tool that allows you to create drawings and animations. We will use
 the functions of Quil to create some of our own drawings.
+
+Lets start reading at the top of the file. As your programs get more complex, you'll need to organize them. You
+organize your Clojure code by placing related functions and data in
+separate files. Clojure expects each file to correspond to a
+*namespace*, so you must *declare* a namespace at the top of each
+file.
+
+There are a couple of things going on here. First, the `:require` in
+`ns` tells Clojure to load other namespaces. The `:as` part of
+`:require` creates an *alias* for a namespace, letting you refer to
+its definitions without having to type out the entire namespace. For
+example, you can use `q/fill` instead of `quil.core/fill`.
 
 We will define our own functions, like so...
 
@@ -179,7 +120,7 @@ so that is where the action of your drawing happens. `sketch` is the
 stage itself. Let's define these functions together, and you will see
 what they do.
 
-In Light Table, in the lines.clj file, add the following after the
+In Nightcode, in the core.clj file, add the following after the
 closing parenthesis of the ns statement from before.
 
 ```clojure
@@ -206,7 +147,7 @@ Third, we set the color of the lines we will draw with `stroke`. The
 code 255 0 0 represents red. You can [look up RGB codes](http://xona.com/colorlist/) for other
 colors if you would like to try something else.
 
-In Light Table, in the lines.clj file, add the following after the
+In Nightcode, in the core.clj file, add the following after the
 closing parenthesis of the setup function.
 
 ```clojure
@@ -251,8 +192,7 @@ draw functions. These have to match exactly the function names we used
 above. The last line is to make our drawing app window keep on top
 of everything else.
 
-Now press `Ctrl + Shift + Enter` (or `Cmd + Shift + Enter`) to
-evaluate the file. Your drawing should appear.
+Save the file and press to "Reload" to evaluate the file. Your drawing should appear.
 
 ### Exercise: Rainbow lines
 Update your drawing so that:
