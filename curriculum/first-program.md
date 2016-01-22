@@ -59,8 +59,8 @@ use a Clojure library called [Quil](https://github.com/quil/quil),
 which creates drawings called "sketches."
 
 By default, your project has been setup with an example sketch. Let's go
-ahead and run this code to make sure everything is working.  In Nightcode,
-look for the "Run" option on the bottom of the main window and click it.
+ahead and run this code to make sure everything is working. In Nightcode,
+look for the "Run with REPL" option on the bottom of the main window and click it.
 
 ![](/curriculum/images/nc-scrn3.png?raw=true)
 
