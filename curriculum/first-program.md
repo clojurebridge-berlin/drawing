@@ -68,7 +68,7 @@ As in the screenshot above, you should see a separate window popup with a
 simple circle within it. If you don't see the window right away, wait a bit
 and make sure it hasn't appeared somewhere behind your other windows.
 
-Great, you've run your the program!
+Great, you've run your program!
 
 ## Your first real program
 
@@ -78,7 +78,7 @@ Quil is a Clojure library that provides the powers of [Processing](https://proce
 tool that allows you to create drawings and animations. We will use
 the functions of Quil to create some of our own drawings.
 
-Lets start reading at the top of the file. As your programs get more complex, you'll need to organize them. You
+Let's start reading at the top of the file. As your programs get more complex, you'll need to organize them. You
 organize your Clojure code by placing related functions and data in
 separate files. Clojure expects each file to correspond to a
 *namespace*, so you must *declare* a namespace at the top of each
