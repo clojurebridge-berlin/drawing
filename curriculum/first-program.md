@@ -148,7 +148,6 @@ line that says `(ellipse 100 100 30 30)` and replace it with the following lines
   (line 200 0 (mouse-x) (mouse-y))
   (line 0 200 (mouse-x) (mouse-y))
   (line 200 200 (mouse-x) (mouse-y))
-  )
 ```
 
 Now the function should look like:
