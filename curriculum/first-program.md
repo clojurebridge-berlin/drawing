@@ -4,8 +4,7 @@ Making Your First Program with Quil
 Now that you know a bit about how to write Clojure code, let's look at
 how to create a standalone application.
 
-In order to do that, you'll first create a *project*. You'll learn how
-to organize your project with *namespaces*. You'll also learn how to
+In order to do that, you'll first create a *project*. You'll also learn how to
 specify your project's *dependencies*. Finally, you'll learn how to
 *build* your project to create the standalone application.
 
@@ -85,32 +84,29 @@ separate files. Clojure expects each file to correspond to a
 file.
 
 There are a couple of things going on here. First, the `:require` in
-`ns` tells Clojure to load other namespaces. The `:as` part of
-`:require` creates an *alias* for a namespace, letting you refer to
-its definitions without having to type out the entire namespace. For
-example, you can use `q/fill` instead of `quil.core/fill`.
+`ns` tells Clojure to load another namespace. The `:refer :all` parts of
+`:require` tells Clojure that you want to call every function in that 
+namespace with no prefix.
 
-We will define our own functions, like so...
+The first function looks a bit like this:
 
 ```clojure
 (defn draw []
-   ; Do some things
+   ;; Do some things
    )
 ```
 
-... that call functions that Quil provides, like so...
-
+Inside, will can call functions, like the quil function to set the background color:
 ```clojure
-   ; Call the quil background function
-   (q/background 240)
+   ;; Call the quil background function
+   (background 255)
 ```
 
 Put it together:
 ```clojure
 (defn draw []
-   ; Call the quil background function
-   (q/background 240)
-   )
+   ;; Call the quil background function
+   (background 255))
 ```
 
 In order to create a drawing (or sketch in Quil lingo) with Quil, you
@@ -125,72 +121,75 @@ closing parenthesis of the ns statement from before.
 
 ```clojure
 (defn setup []
-
-  (q/frame-rate 30)
-
-  (q/color-mode :rgb)
-
-  (q/stroke 255 0 0))
+  (smooth)
+  ;; New lines!
+  (color-mode :rgb)
+  (stroke 255 0 0))
 ```
 
 This is the `setup` function that sets the stage for the
-drawing. First, we call quil's `frame-rate` function to say that the
-drawing should be redrawn 30 times per second. We put `q/` in front to
-say that this is `frame-rate` from quil. Look up at the ns
-statement. Since it says `:as q`, we can use q as a short hand for
-quil, and `library-name/function-name` is the way you call a function
-from a library.
+drawing. First, we call quil's `smooth` function to say that the
+drawing will have smooth (not pixelated) edges. Since we did `:refer :all`
+in the namespace, we can use the `smooth`, `color-mode` and `stroke` 
+directly from the quil library. 
 
-Second, we set the color mode to RGB.
+Second, we set the color mode to RGB (meaning we can define every color
+using a combination of **r**ed, **g**reen and **b**lue colors).
 
 Third, we set the color of the lines we will draw with `stroke`. The
 code 255 0 0 represents red. You can [look up RGB codes](http://xona.com/colorlist/) for other
 colors if you would like to try something else.
 
-In Nightcode, in the core.clj file, add the following after the
-closing parenthesis of the setup function.
+In Nightcode, in the core.clj file, find where the `draw` function is defined. Remove the 
+line that says `(ellipse 100 100 30 30)` and replace it with the following lines:
+
+```clojure
+  (line 0 0 (mouse-x) (mouse-y))
+  (line 200 0 (mouse-x) (mouse-y))
+  (line 0 200 (mouse-x) (mouse-y))
+  (line 200 200 (mouse-x) (mouse-y))
+  )
+```
+
+Now the function should look like:
 
 ```clojure
 (defn draw []
-
-  (q/line 0 0 (q/mouse-x) (q/mouse-y))
-
-  (q/line 200 0 (q/mouse-x) (q/mouse-y))
-
-  (q/line 0 200 (q/mouse-x) (q/mouse-y))
-
-  (q/line 200 200 (q/mouse-x) (q/mouse-y)))
+  (background 255)
+  (fill 192)
+  ;; the new lines!
+  (line 0 0 (mouse-x) (mouse-y))
+  (line 200 0 (mouse-x) (mouse-y))
+  (line 0 200 (mouse-x) (mouse-y))
+  (line 200 200 (mouse-x) (mouse-y)))
 ```
-
-Here we call the quil `line` function four times. We also call two
-functions repeatedly as the arguments to the `line` function:
+The call to `(background 255)` sets the background to white (this is
+the same as calling `(background 255 255 255)`).
+The next call `(fill 192)` sets the color of every thing we draw afterwards.
+`192` is a gray color.
+After, we call the quil `line` function four times. 
+We also call two functions repeatedly as the arguments to the `line` function:
 `mouse-x` and `mouse-y`. These get the current position (x and y
-coordinates on a 2d plane) of the mouse. The `line` function takes
-four arguments - two sets of x, y coordinates. The first x and y are
-the starting position of the line. The second x and y are the ending
-position of the line. So we start each of these lines at a fixed
-position, then end them wherever the mouse is when the sketch is
-drawn.
+coordinates on a 2d plane) of the mouse. 
+
+The `line` function takes four arguments - two sets of x, y coordinates. 
+The first x and y are the starting position of the line. The second 
+x and y are the ending position of the line. So we start each of 
+these lines at a fixed position, then end them wherever the mouse
+is when the sketch is drawn.
 
 ```clojure
-(q/defsketch hello-lines
-
+(defsketch example
   :title "You can see lines"
-
-  :size [500 500]
-
   :setup setup
-
   :draw draw
-
-  :features [:keep-on-top])
+  :size [500 500])
 ```
 
 This is our sketch. You can set attributes of the sketch such as the
 title and size. You also tell it what are the names of the setup and
 draw functions. These have to match exactly the function names we used
-above. The last line is to make our drawing app window keep on top
-of everything else.
+above.
 
 Save the file and press to "Reload" to evaluate the file. Your drawing should appear.
 
