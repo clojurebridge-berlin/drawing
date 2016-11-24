@@ -15,21 +15,26 @@ the work you do in a REPL is lost when you close the REPL. You can
 think of a project as a permanent home for your code. You'll be using
 a code editor called "Nightcode" to create and edit your project.
 
-To create a new project, first download and install Nightcode. You can
-download it from [this website](https://sekao.net/nightcode/). Once it's
-installed, start it up and click "New Project" in the upper left. Enter
-the name "drawing" for your app, and then hit "Save":
+To create a new project, first download and install Nightcode. Because
+newer versions removed the project helper that we want to use, please
+use Nightcode version 2.0.4.  You can download it from
+[this website](https://github.com/oakes/Nightcode/releases). Once it's
+installed, start it up and click "Start" in the upper
+left.
 
 ![](/curriculum/images/nc-scrn1.png?raw=true)
 
-At this point, Nightcode will ask you to choose the type of project you
-want to start. Your project will be graphical, so choose the "Graphics"
-option:
+At the menu, Nightcode will offer you several types of projects you
+want to start. Your project will be graphical, so choose the "Graphics
+App" option:
 
 ![](/curriculum/images/nc-scrn2.png?raw=true)
 
-At this point, your project will have been created, and you should see
-a directory structure that looks like this on the left side of the Nightcode
+Nightcode pops up a file chooser menu where you can select the name
+and the place where to store your new project. 
+
+Now, your project has been created, and you should see a directory
+structure that looks like this on the left side of the Nightcode
 screen:
 
 ```
@@ -51,11 +56,17 @@ skeleton:
 - `project.clj` is a configuration file. It helps answer questions
   like, "What dependencies does this project have?" and "When this
   Clojure program runs, what function should get executed first?"
+  Generally speaking, it describes your project.
+- `README.md` is a file in the
+  [markdown](https://daringfireball.net/projects/markdown/) format.
+  By convention, it contains the first things a user of your project
+  has to know. 
 - `src/drawing/core.clj` is where the Clojure code goes
 
-Because you chose the "Graphics" option, your project is configured to
-use a Clojure library called [Quil](https://github.com/quil/quil),
-which creates drawings called "sketches."
+Because you chose the "Graphics App" option, your project is
+configured to use a Clojure library called
+[Quil](https://github.com/quil/quil), which creates drawings called
+"sketches."
 
 By default, your project has been setup with an example sketch. Let's go
 ahead and run this code to make sure everything is working. In Nightcode,
@@ -65,7 +76,8 @@ look for the "Run with REPL" option on the bottom of the main window and click i
 
 As in the screenshot above, you should see a separate window popup with a
 simple circle within it. If you don't see the window right away, wait a bit
-and make sure it hasn't appeared somewhere behind your other windows.
+and make sure it hasn't appeared somewhere behind your other windows
+or on a different screen if you have multiple screens connected.
 
 Great, you've run your program!
 
