@@ -108,7 +108,7 @@ The first function looks a bit like this:
    )
 ```
 
-Inside, will can call functions, like the quil function to set the background color:
+Inside, we can call functions, like the quil function to set the background color:
 ```clojure
    ;; Call the quil background function
    (background 255)
